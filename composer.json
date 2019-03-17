@@ -1,0 +1,24 @@
+{
+    "name": "sobanvuex/lumen-bin-cli",
+    "description": "Command line interface for lumen-bin",
+    "keywords": ["lumen-bin", "lumen", "bin", "pastebin", "cli"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alex Soban",
+            "email": "me@soban.co"
+        }
+    ],
+    "require": {
+        "symfony/console": "~3.0|~4.0",
+        "bacon/bacon-qr-code": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SobanVuex\\LumenBin\\Console\\": "src/"
+        }
+    },
+    "bin": [
+        "lu-bin"
+    ]
+}

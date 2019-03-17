@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__.'/vendor/autoload.php';
+
+use SobanVuex\LumenBin\Console\Command\CliCommand;
+use Symfony\Component\Console\Application;
+
+$cli = basename(__FILE__);
+$app = new Application('LumenBinCli', '0.1.0');
+
+$app->add(new CliCommand($cli));
+$app->setDefaultCommand($cli, true);
+$app->run();

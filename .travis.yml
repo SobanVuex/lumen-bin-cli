@@ -1,0 +1,14 @@
+language: php
+
+php:
+  - 7.1
+  - 7.2
+  - 7.3
+
+install:
+  - if [[ "${TRAVIS_PHP_VERSION}" == "7.2" ]]; then composer require --dev phpstan/phpstan --prefer-dist --update-with-dependencies; fi
+  - travis_retry composer update --prefer-dist
+
+script:
+  # - vendor/bin/phpunit
+  - if [[ "${TRAVIS_PHP_VERSION}" == "7.2" ]]; then vendor/bin/phpstan analyse -l 3 src lu-bin; fi
