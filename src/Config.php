@@ -7,6 +7,13 @@ use Noodlehaus\AbstractConfig;
 class Config extends AbstractConfig
 {
     /**
+     * Stores the configuration data.
+     *
+     * @var array
+     */
+    protected $data;
+
+    /**
      * {@inheritdoc}
      */
     public function __construct(array $data = [])
