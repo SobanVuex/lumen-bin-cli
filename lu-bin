@@ -9,7 +9,7 @@ if (is_file(__DIR__.'/../../autoload.php')) {
 
 use SobanVuex\LumenBin\Console\Application;
 
-$app = new Application('LumenBin\\Console', '0.1.0');
+$app = new Application('LumenBin\\Console', '0.0.1');
 $app
     ->loadCommands()
     ->run()
