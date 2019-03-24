@@ -10,5 +10,9 @@ install:
   - travis_retry composer update --prefer-dist
 
 script:
-  # - vendor/bin/phpunit
-  - if [[ "${TRAVIS_PHP_VERSION}" == "7.2" ]]; then vendor/bin/phpstan analyse -l 3 src lu-bin; fi
+  - vendor/bin/phpunit --coverage-text --coverage-clover coverage.xml
+  - if [[ "${TRAVIS_PHP_VERSION}" == "7.2" ]]; then vendor/bin/phpstan analyse -l 6 src lu-bin; fi
+
+after_script:
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.xml
