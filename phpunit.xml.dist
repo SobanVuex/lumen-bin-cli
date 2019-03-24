@@ -19,6 +19,6 @@
         </whitelist>
     </filter>
     <php>
-        <env name="LUMENBIN_CONFIG" value="/tmp/lumenbin.config.json"/>
+        <env name="LUMENBIN_CONFIG" value="/tmp/lumenbin/config.json"/>
     </php>
 </phpunit>
