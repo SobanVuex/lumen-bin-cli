@@ -6,13 +6,17 @@ php:
   - 7.3
 
 install:
-  - if [[ "${TRAVIS_PHP_VERSION}" == "7.2" ]]; then composer require --dev phpstan/phpstan --prefer-dist --update-with-dependencies; fi
+  - if [[ "${TRAVIS_PHP_VERSION}" == "7.3" ]]; then curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter; fi
+  - if [[ "${TRAVIS_PHP_VERSION}" == "7.3" ]]; then composer require --dev phpstan/phpstan --prefer-dist --update-with-dependencies; fi
   - travis_retry composer update --prefer-dist
 
+before_script:
+  - if [[ "${TRAVIS_PHP_VERSION}" == "7.3" ]]; then chmod +x ./cc-test-reporter; fi
+  - if [[ "${TRAVIS_PHP_VERSION}" == "7.3" ]]; then ./cc-test-reporter before-build; fi
+
 script:
-  - vendor/bin/phpunit --coverage-text --coverage-clover coverage.xml
-  - if [[ "${TRAVIS_PHP_VERSION}" == "7.2" ]]; then vendor/bin/phpstan analyse -l 6 src lu-bin; fi
+  - vendor/bin/phpunit --coverage-text --coverage-clover clover.xml
+  - if [[ "${TRAVIS_PHP_VERSION}" == "7.3" ]]; then vendor/bin/phpstan analyse -l 6 src lu-bin; fi
 
 after_script:
-  - wget https://scrutinizer-ci.com/ocular.phar
-  - php ocular.phar code-coverage:upload --format=php-clover coverage.xml
+  - if [[ "${TRAVIS_PHP_VERSION}" == "7.3" ]]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
