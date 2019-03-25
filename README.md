@@ -7,6 +7,7 @@
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/SobanVuex/lumen-bin-cli.svg?style=flat-square)][maintainability]
 [![Coverage](https://img.shields.io/codeclimate/coverage/SobanVuex/lumen-bin-cli.svg?style=flat-square)][coverage]
 
+
 [build-status]: https://travis-ci.com/SobanVuex/lumen-bin-cli
 [license]: LICENSE
 [release]: https://packagist.org/packages/sobanvuex/lumen-bin-cli
